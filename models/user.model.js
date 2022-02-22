@@ -21,7 +21,7 @@ UserSchema.pre('save', function(next){
     })
 })
 
-UserSchema.method.comparePassword = function(password){
+UserSchema.methods.comparePassword = function(password){
 
     const hashedPassword = this.password;
     return bcrypt.compare(password, hashedPassword);

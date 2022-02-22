@@ -45,13 +45,13 @@ const signin = async (req,res)=>{
     }
     
     // check if password is correct or not
-    // try{
-    //     const isMatch = await user.comparePassword(req.body.password);
-    //     if(!isMatch) return res.status(401).json({status: "failure", message: "No User found"})
-    // }
-    // catch(err){
-    //     return res.status(500).json({ status: "failure", message: err}) 
-    // }
+    try{
+        const isMatch = await user.comparePassword(req.body.password);
+        if(!isMatch) return res.status(401).json({status: "failure", message: "No User found"})
+    }
+    catch(err){
+        return res.status(500).json({ status: "failure", message: err}) 
+    }
 
     //generate token
     const token = generateToken(user);
